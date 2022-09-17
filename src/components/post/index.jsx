@@ -3,7 +3,7 @@ import styles from "./post.module.scss";
 const Post = ({ author, description }) => {
   return (
     <article className={styles.post}>
-      <header>
+      <header className={styles.header}>
         <div className={styles.author}>
           <img src="https://avatars.githubusercontent.com/u/9344482?v=4" />
 
@@ -22,8 +22,8 @@ const Post = ({ author, description }) => {
         <p>Fala galeraa 👋 </p>
         <p>
           Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-          no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀
-          👉
+          no NLW Return, evento da Rocketseat. O nome do projeto é{" "}
+          <strong>DoctorCare</strong>
         </p>
         <p>
           <a href="#">jane.design/doctorcare</a>
