@@ -107,6 +107,11 @@
       &:hover {
         background-color: var(--green-300);
       }
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
     }
   }
 }

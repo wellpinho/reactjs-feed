@@ -17,8 +17,23 @@ const Post = ({ content }) => {
   }
 
   function handleNewComment(e) {
+    e.target.setCustomValidity("");
     setNewComment(e.target.value);
   }
+
+  function newCommentInvalid(e) {
+    e.target.setCustomValidity("Este campo é obrigatŕorio");
+  }
+
+  function deleteComment(commentToDelete) {
+    const commentWithoutDeleteOne = comments.filter((comment) => {
+      return comment !== commentToDelete;
+    });
+
+    setComments(commentWithoutDeleteOne);
+  }
+
+  const isNewCommentEmpty = newComment.length === 0;
 
   return (
     <article className={styles.post}>
@@ -60,19 +75,24 @@ const Post = ({ content }) => {
         <strong>Deixe seu feedback</strong>
 
         <textarea
+          required
+          onInvalid={newCommentInvalid} // chamado sempre que o texto for inválido
           onChange={handleNewComment}
           value={newComment}
           placeholder="deixe um comentário..."
         />
 
         <footer>
-          <button type="submit">Publicar</button>
+          <button disabled={isNewCommentEmpty} type="submit">
+            Publicar
+          </button>
         </footer>
       </form>
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment content={comment} />;
+          // passando função deleteComment via props para o component filhos
+          return <Comment content={comment} onDeleteComment={deleteComment} />;
         })}
       </div>
     </article>
