@@ -11,7 +11,9 @@ const Comment = ({ content, onDeleteComment }) => {
   }
 
   function handleLikeComment() {
-    setLikeCount(likeCount + 1);
+    setLikeCount((atualValueLike) => {
+      return atualValueLike + 1;
+    }); // sempre que precisar pegar o valor atual do estados devemos usa função
   }
 
   return (
