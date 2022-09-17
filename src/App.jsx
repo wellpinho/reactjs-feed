@@ -1,19 +1,29 @@
 import Header from "./components/header";
 import Post from "./components/post";
+import Sidebar from "./components/sidebar";
+
 import "./styles/global.scss";
+import styles from "./app.module.scss";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Header />
-      <h1>Hello world</h1>
 
-      <Post
-        author="Wellington Pinho"
-        description="Lorem ipsoum demem borutu chaha"
-      />
+      <div className={styles.wrapper}>
+        <Sidebar />
 
-      <Post author="Raica Pinho" description="Meu pai é muito legal!" />
+        <main>
+          <Post
+            author="Wellington Pinho"
+            description="lorem ipsun marting foundation"
+          />
+          <Post
+            author="Mary Pinho"
+            description="lorem ipsun marting foundation"
+          />
+        </main>
+      </div>
     </div>
   );
 }

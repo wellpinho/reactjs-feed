@@ -1,0 +1,69 @@
+.sidebar {
+  background-color: var(--gray-800);
+  border-radius: 0.3rem;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 4.5rem;
+    object-fit: cover;
+  }
+
+  .profile {
+    box-sizing: initial;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -2rem;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.2rem;
+      border: 0.1875rem solid var(--white);
+      outline: 0.09375rem solid var(--green-500);
+    }
+
+    strong {
+      margin-top: 1rem;
+      color: var(--gray-100);
+      line-height: 1.6;
+    }
+
+    span {
+      font-size: 0.875rem;
+      color: var(--gray-400);
+      line-height: 1.6;
+    }
+  }
+
+  footer {
+    border-top: 1px solid var(--gray-600);
+    margin-top: 1.5rem;
+    padding: 1.5rem 2rem 2rem;
+
+    a {
+      background-color: transparent;
+      color: var(--green-500);
+      border: 1px solid var(--green-500);
+      border-radius: 0.2rem;
+      height: 3.125rem;
+      padding: 0 1.5rem;
+      font-weight: bold;
+      display: block;
+      text-decoration: none;
+      transition: color 0.1s, background-color 0.1s;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      gap: 0.75rem;
+    }
+
+    a:hover {
+      background-color: var(--green-500);
+      color: var(--white);
+    }
+  }
+}
