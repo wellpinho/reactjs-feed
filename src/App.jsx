@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import api from "./api";
 import Header from "./components/header";
 import Post from "./components/post";
 import Sidebar from "./components/sidebar";
@@ -6,6 +8,12 @@ import "./styles/global.scss";
 import styles from "./app.module.scss";
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    setPosts(api);
+  }, []);
+
   return (
     <div>
       <Header />
@@ -14,14 +22,9 @@ function App() {
         <Sidebar />
 
         <main>
-          <Post
-            author="Wellington Pinho"
-            description="lorem ipsun marting foundation"
-          />
-          <Post
-            author="Mary Pinho"
-            description="lorem ipsun marting foundation"
-          />
+          {posts.map((post) => {
+            return <Post key={post.id} content={post} />;
+          })}
         </main>
       </div>
     </div>

@@ -2,37 +2,43 @@ import Avatar from "../avatar";
 import Comment from "../coments";
 import styles from "./post.module.scss";
 
-const Post = ({ author, description }) => {
+const Post = ({ content }) => {
+  const { avatar, date, email, name, role } = content.author;
+
   return (
     <article className={styles.post}>
       <header className={styles.header}>
         <div className={styles.author}>
-          <Avatar src="https://avatars.githubusercontent.com/u/9344482?v=4" />
+          <Avatar src={avatar} />
 
           <div className={styles.authorInfo}>
-            <strong>Wellington Pinho</strong>
-            <span>Software Engineer</span>
+            <strong>{name}</strong>
+            <span>{role}</span>
           </div>
         </div>
 
-        <time title="17 de Setembro ás 10:32" dateTime="2022-09-17 10:32">
-          Publicado há 1h
-        </time>
+        <time>{date}</time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galeraa 👋 </p>
-        <p>
-          Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-          no NLW Return, evento da Rocketseat. O nome do projeto é{" "}
-          <strong>DoctorCare</strong>
-        </p>
-        <p>
-          <a href="#">jane.design/doctorcare</a>
-        </p>
-        <p>
-          <a href="#">#novoprojeto #nlw #rocketseat</a>
-        </p>
+        {content.content.map((item) => {
+          return (
+            <div key={content.id}>
+              <h4>{item.title}</h4>
+              <small>{item.body}</small>
+              <p>
+                <a href="#">{email}</a>
+              </p>
+
+              {item.tags.map((tag) => (
+                <a key={tag} href="#">
+                  {" "}
+                  {tag}
+                </a>
+              ))}
+            </div>
+          );
+        })}
       </div>
 
       <form className={styles.form}>
@@ -46,8 +52,6 @@ const Post = ({ author, description }) => {
       </form>
 
       <div className={styles.commentList}>
-        <Comment />
-        <Comment />
         <Comment />
       </div>
     </article>
