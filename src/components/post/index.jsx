@@ -1,9 +1,24 @@
+import { useEffect, useState } from "react";
 import Avatar from "../avatar";
 import Comment from "../coments";
 import styles from "./post.module.scss";
 
 const Post = ({ content }) => {
   const { avatar, date, email, name, role } = content.author;
+
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
+
+  function handleCreateNewComment(e) {
+    e.preventDefault();
+
+    setComments([...comments, newComment]);
+    setNewComment("");
+  }
+
+  function handleNewComment(e) {
+    setNewComment(e.target.value);
+  }
 
   return (
     <article className={styles.post}>
@@ -41,10 +56,14 @@ const Post = ({ content }) => {
         })}
       </div>
 
-      <form className={styles.form}>
+      <form onSubmit={handleCreateNewComment} className={styles.form}>
         <strong>Deixe seu feedback</strong>
 
-        <textarea placeholder="deixe um comentário..." />
+        <textarea
+          onChange={handleNewComment}
+          value={newComment}
+          placeholder="deixe um comentário..."
+        />
 
         <footer>
           <button type="submit">Publicar</button>
@@ -52,7 +71,9 @@ const Post = ({ content }) => {
       </form>
 
       <div className={styles.commentList}>
-        <Comment />
+        {comments.map((comment) => {
+          return <Comment content={comment} />;
+        })}
       </div>
     </article>
   );
