@@ -32,6 +32,16 @@ const Post = ({ author, description }) => {
           <a href="#">#novoprojeto #nlw #rocketseat</a>
         </p>
       </div>
+
+      <form className={styles.form}>
+        <strong>Deixe seu feedback</strong>
+
+        <textarea placeholder="deixe um comentário..." />
+
+        <footer>
+          <button type="submit">Publicar</button>
+        </footer>
+      </form>
     </article>
   );
 };
